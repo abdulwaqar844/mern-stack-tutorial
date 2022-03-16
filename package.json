@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
@@ -14,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
+    "bootstrap": "^5.1.3",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.10",
