@@ -21,7 +21,7 @@ function Goals() {
     }
 
     dispatch(getGoals());
-  }, [user, navigate, isError, message, dispatch, isLoading, goals]);
+  }, [user, navigate, isError, message, dispatch]);
   if (isLoading) {
     return <div> Loading ...</div>;
   }
