@@ -6,12 +6,13 @@ import { deleteGoals, getGoals } from "../features/goal/goalSlice";
 function Goals() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { goals, isLoading, isError, message } = useSelector(
+  const { goals, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.goal
   );
   const { user } = useSelector((state) => state.auth);
-
   useEffect(() => {
+    console.log(user);
+
     if (isError) {
       console.log(message);
     }
@@ -21,7 +22,7 @@ function Goals() {
     }
 
     dispatch(getGoals());
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user, navigate, isError, message, dispatch, isSuccess]);
   if (isLoading) {
     return <div> Loading ...</div>;
   }

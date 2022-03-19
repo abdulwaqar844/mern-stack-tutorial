@@ -1,8 +1,8 @@
 import { register, reset } from "../../src/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,11 +19,16 @@ function Register() {
   const { fullname, email, password, password2 } = formData;
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
     if (isSuccess || user) {
       navigate("/");
     }
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+    setTimeout(() => {
+      dispatch(reset());
+    }, 5000);
+  }, [user, isError, isSuccess, message, navigate, dispatch, isLoading]);
   const HandleChange = (e) => {
     const { name, value } = e.target;
     setFormData((preState) => ({ ...preState, [name]: value }));
@@ -44,7 +49,7 @@ function Register() {
     }
   };
   if (isLoading) {
-    return <h2>Loading</h2>;
+    return <h2>Loading....</h2>;
   }
   return (
     <div
@@ -62,6 +67,7 @@ function Register() {
           <div className="flex flex-col items-center">
             <h1 className="text-2xl">Register</h1>
           </div>
+
           <div className="flex flex-col py-4 items-start">
             <div className="flex flex-col py-2">
               <label>Full Name</label>

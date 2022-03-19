@@ -8,11 +8,13 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewTask from "./pages/NewTask";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => (
   <Provider store={store}>
-    <Navbar />
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="" element={<Dashboard />} />
         <Route path="register" element={<Register />} />
@@ -20,6 +22,7 @@ const Index = () => (
         <Route path="goal/createNew" element={<NewTask />} />
       </Routes>
     </BrowserRouter>
+    <ToastContainer  />
   </Provider>
 );
 

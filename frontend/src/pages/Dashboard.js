@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { reset } from "../features/auth/authSlice";
 import Goals from "./Goals";
 
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, isError, message, isLoading } = useSelector(
+  const { user, isError, message, isLoading, isSuccess } = useSelector(
     (state) => state.auth
   );
   useEffect(() => {
-    if (user === null || !user) {
+    console.log(user);
+    if (!user) {
       navigate("/login");
-  
     }
-  }, [user, navigate, isError, message, dispatch]);
+    dispatch(reset());
+  }, [user, navigate, isError, message, dispatch, isSuccess]);
   if (isLoading) {
     return <div>Loading</div>;
   }
@@ -24,7 +26,6 @@ function Dashboard() {
       style={{
         justifyContent: "center",
         alignItems: "center",
-
         margin: "0rem 7rem",
       }}
     >
@@ -48,10 +49,11 @@ function Dashboard() {
             }}
           >
             <div>
-             
               <h2>Goals</h2>
             </div>
-            <a href="goal/createNew" className="btn btn-success">Add New Goal</a>
+            <a href="goal/createNew" className="btn btn-success">
+              Add New Goal
+            </a>
           </div>
         </div>
         <Goals />
