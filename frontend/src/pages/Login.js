@@ -4,7 +4,7 @@ import { reset, login } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { user, isLoading, isSuccess, isError, message } = useSelector(
@@ -15,7 +15,6 @@ function Login() {
     password: "",
   });
 
-  
   useEffect(() => {
     if (isSuccess || user) {
       navigate("/");
@@ -39,7 +38,7 @@ function Login() {
       className="py-8   
      mx-4  flex flex-col items-center justify-center px-12"
     >
-      <div className="">
+      <div>
         <h1 className="text-3xl">MERN App</h1>
       </div>
       <form onSubmit={handeSubmit}>

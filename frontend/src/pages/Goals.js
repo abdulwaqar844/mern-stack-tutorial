@@ -21,7 +21,7 @@ function Goals() {
     }
 
     dispatch(getGoals());
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user, navigate, isError, message, dispatch, isLoading, goals]);
   if (isLoading) {
     return <div> Loading ...</div>;
   }
@@ -38,9 +38,9 @@ function Goals() {
         </thead>
         <tbody>
           {goals &&
-            goals.map((goal) => {
+            goals.map((goal, i) => {
               return (
-                <tr key={goal?._id} scope="row">
+                <tr key={i} scope="row">
                   <td>{goal?.task}</td>
                   <td>{goal?.status}</td>
                   <td>{new Date(goal?.createdAt).toLocaleDateString()}</td>

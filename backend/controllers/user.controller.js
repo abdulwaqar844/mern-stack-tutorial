@@ -22,7 +22,7 @@ exports.register = async (req, res) => {
     const payload = {
       id: user.id,
     };
-    jwt.sign(payload, "jwtSecret", { expiresIn: "3h" }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3h" }, (err, token) => {
       if (err) throw err;
 
       res.json({ token, email, fullname });
@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
       id: user.id,
       //We will pass User Role as well in payload
     };
-    jwt.sign(payload, "jwtSecret", { expiresIn: "3h" }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3h" }, (err, token) => {
       if (err) throw err;
       res.status(200).json({
         fullname,

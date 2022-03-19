@@ -48,7 +48,7 @@ function Dashboard() {
             }}
           >
             <div>
-              {" "}
+             
               <h2>Goals</h2>
             </div>
             <a href="goal/createNew" className="btn btn-success">Add New Goal</a>
