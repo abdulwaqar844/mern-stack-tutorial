@@ -2,32 +2,32 @@ import axios from "axios";
 
 const API_URL = `${config.apiUrl}/goal/`;
 const createGoal = async (goalData, token) => {
-  const config = {
+  const configurations = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post(API_URL, goalData, config);
+  const response = await axios.post(API_URL, goalData, configurations);
 
   return response.data;
 };
 const getGoals = async (token) => {
-  const configuration = {
+  const configurations = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL, configuration);
+  const response = await axios.get(API_URL, configurations);
 
   return response.data;
 };
 const deleteGoals = async (goalId, token) => {
-  const config = {
+  const configurations = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.delete(API_URL + goalId, configuration);
+  const response = await axios.delete(API_URL + goalId, configurations);
   return response.data;
 };
 
